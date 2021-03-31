@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<grammar xml:lang="en" root="controls"
+tag-format="semantics/1.0" version="1.0"
+xmlns="http://www.w3.org/2001/06/grammar">
+
+  <!-- Grammar is loaded when the game launches. -->
+
+  <rule id="controls">
+    <one-of>
+      <item>
+        <ruleref uri="#movement"/>
+      </item>
+      <item>
+       <ruleref uri="#step"/>
+      </item>
+      <item>
+        <ruleref uri="#action"/>
+      </item>
+      <item>
+        <ruleref uri="#portal_interaction"/>
+      </item>
+      <item>
+        <ruleref uri="#teleport_interaction"/>
+      </item>
+      <item>
+        <ruleref uri="#gameover_menu"/>
+      </item>
+    </one-of>
+  </rule>
+
+  <!-- Movement -->
+  <rule id="movement">
+    <one-of>
+      <item> go </item>
+      <item> move </item>
+    </one-of>
+    <ruleref uri="#direction"/>
+    <tag>out=rules.latest();</tag>
+  </rule>
+
+  <rule id="direction">
+    <one-of>
+      <item>left</item>
+      <item>right</item>
+    </one-of>
+  </rule>
+
+  <rule id="step">
+    <one-of>
+      <item>step left</item>
+      <item>step right</item>
+    </one-of>
+  </rule>
+
+  <!-- Action: -->
+  <rule id="action">
+    <one-of>
+      <item>jump left</item>
+      <item>jump right</item>
+      <item>jump up</item>
+      <item>stop</item>
+    </one-of>
+  </rule>
+
+
+  <!-- Other actions -->
+  <!-- Portal interactions -->
+  <rule id="portal_interaction">
+    <one-of>
+      <item>take portal</item>
+      <item>use portal</item>
+    </one-of>
+    <tag>out="portal"</tag>
+  </rule>
+
+  <!-- Transport interactions -->
+  <rule id="teleport_interaction">
+    <one-of>
+      <item>take telesport</item>
+      <item>use telesport</item>
+    </one-of>
+    <tag>out="teleport"</tag>
+  </rule>
+
+  <!-- Game Over -->
+  <rule id="gameover_menu">
+    <one-of>
+      <item>Menu</item>
+      <item>Exit</item>
+    </one-of>
+  </rule>
+
+</grammar>

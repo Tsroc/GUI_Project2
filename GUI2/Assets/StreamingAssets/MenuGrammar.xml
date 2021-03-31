@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<grammar xml:lang="en" root="mainmenu"
+tag-format="semantics/1.0" version="1.0"
+xmlns="http://www.w3.org/2001/06/grammar">
+
+  <!-- Grammer loaded when the game is launched. -->
+  <rule id="mainmenu">
+    <one-of>
+      <item>
+        <ruleref uri="#play"/>
+      </item>
+      <item>
+        <ruleref uri="#quit"/>
+      </item>
+    </one-of>
+  </rule>
+
+  <rule id="play">
+    <one-of>
+      <item>play game</item>
+      <item>start game</item>
+      <item>begin game</item>
+    </one-of>
+    <tag>out="play"</tag>
+  </rule>
+
+  <rule id="quit">
+    <one-of>
+      <item>quit game</item>
+      <item>end game</item>
+      <item>exit game</item>
+    </one-of>
+    <tag>out="play"</tag>
+  </rule>
+
+</grammar>
