@@ -11,6 +11,7 @@ TagManager:
   - Door Trigger
   - Teleport
   - Lava
+  - Instruction
   layers:
   - Default
   - TransparentFX

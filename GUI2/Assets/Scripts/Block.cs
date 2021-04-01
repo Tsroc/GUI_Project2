@@ -10,6 +10,10 @@ public class Block : MonoBehaviour
         {
             collision.gameObject.GetComponent<Door>().OpenDoor();
         }
+        else if (collision.tag == "Instruction")
+        {
+            collision.gameObject.GetComponent<Instruction>().Activate();
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)

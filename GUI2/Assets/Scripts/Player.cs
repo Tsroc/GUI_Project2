@@ -202,6 +202,7 @@ public class Player : MonoBehaviour
      */
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log(collision.name);
         if (collision.tag == "Coin")
         {
             Destroy(collision.gameObject);
@@ -219,6 +220,10 @@ public class Player : MonoBehaviour
             // Call end game menu
             setCanMove(false);
             failureNotification.gameObject.SetActive(true);
+        }
+        else if (collision.tag == "Instruction")
+        {
+            collision.gameObject.GetComponent<Instruction>().Activate();
         }
 
     }
