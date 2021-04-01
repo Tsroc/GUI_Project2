@@ -21,9 +21,6 @@ xmlns="http://www.w3.org/2001/06/grammar">
         <ruleref uri="#portal_interaction"/>
       </item>
       <item>
-        <ruleref uri="#teleport_interaction"/>
-      </item>
-      <item>
         <ruleref uri="#gameover_menu"/>
       </item>
     </one-of>
@@ -59,6 +56,8 @@ xmlns="http://www.w3.org/2001/06/grammar">
       <item>jump left</item>
       <item>jump right</item>
       <item>jump up</item>
+      <item>dash left</item>
+      <item>dash right</item>
       <item>stop</item>
     </one-of>
   </rule>
@@ -72,15 +71,6 @@ xmlns="http://www.w3.org/2001/06/grammar">
       <item>use portal</item>
     </one-of>
     <tag>out="portal"</tag>
-  </rule>
-
-  <!-- Transport interactions -->
-  <rule id="teleport_interaction">
-    <one-of>
-      <item>take telesport</item>
-      <item>use telesport</item>
-    </one-of>
-    <tag>out="teleport"</tag>
   </rule>
 
   <!-- Game Over -->

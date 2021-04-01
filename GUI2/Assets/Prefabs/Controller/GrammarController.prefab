@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6366883422590501700}
   - component: {fileID: 6366883422590501703}
+  - component: {fileID: 41711298648940439}
   m_Layer: 0
   m_Name: GrammarController
   m_TagString: Untagged
@@ -41,5 +42,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c06e18b845ca4048a2a16baf0c07c1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &41711298648940439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6366883422590501702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bd17b5315a72a54190cd899018b198a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -35,6 +35,17 @@ public class SceneController : MonoBehaviour
         SceneManager.LoadSceneAsync(SceneNames.LEVEL_3);
     }
 
+    public void LaunchLevel4()
+    {
+        SceneManager.LoadSceneAsync(SceneNames.LEVEL_4);
+    }
+
+    public void ReloadScene()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
+    }
+
     /*
         Will call the menuscene, loadscene will load on the next update and remain until the menuscene is loaded.
     */

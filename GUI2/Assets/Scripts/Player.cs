@@ -8,19 +8,15 @@ public class Player : MonoBehaviour
     [SerializeField] private LayerMask foregroundLayerMask;
     [SerializeField] private GameObject failureNotification;
     [SerializeField] private Text coinsCollectedText;
+    [SerializeField] private float movementSpeed = 5.0f;
+    [SerializeField] private float jumpVelocity = 13.0f;
     private Rigidbody2D rigidbody;
     private BoxCollider2D boxCollider;
     private Animator anim;
-    [SerializeField] private float movementSpeed = 5.0f;
-    [SerializeField] private float jumpVelocity = 13.0f;
-    [SerializeField] private List<GameObject> teleportList;
+    private int coinsCollected = 0;
     private int direction;
     private bool hasDestination = false;
     private bool canMove = true;
-    private int coinsCollected = 0;
-
-
-
 
     void Start()
     {
@@ -40,7 +36,6 @@ public class Player : MonoBehaviour
                 if  ((Input.GetAxisRaw("Horizontal") != 0)||(Input.GetKeyDown(KeyCode.Space)) ){
                     hasDestination = false;
                 }
-
             }
             else if (Input.GetAxisRaw("Horizontal") == 1)
             {
@@ -61,15 +56,30 @@ public class Player : MonoBehaviour
         }
     }
 
-    /*
-     * === Keyboard movement: start ===
-     */
-    private void Jump(float jumpVelocity)
+    public void ClearDestination()
     {
-        ClearDestination();
-        rigidbody.velocity = Vector2.up * jumpVelocity;
+        hasDestination = false;
     }
 
+    private void setCanMove(bool b)
+    {
+        canMove = b;
+        anim.SetInteger("direction", 0);
+    }
+
+    private bool IsGrounded()
+    {
+        // Currently allowing double jumps...
+        RaycastHit2D raycast = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down * .1f, foregroundLayerMask);
+        //Debug.Log(raycast.collider.tag);
+        return raycast.collider != null;
+    }
+    /*
+     * === Voice command actions: start ===
+     *
+     */
+
+    // Jump, string arg sets the direction of the jump. 
     public void Jump(string action)
     {
         ClearDestination();
@@ -88,9 +98,69 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void ClearDestination()
+    // Dash, string arg sets the direction of the jump. 
+    public void Dash(string action)
     {
-        hasDestination = false;
+        ClearDestination();
+
+        if (action == "left")
+        {
+            rigidbody.velocity = new Vector3(-25, 2, 0);
+        }
+        else if (action == "right")
+        {
+            rigidbody.velocity = new Vector3(25, 2, 0);
+        }
+        else if (action == "up")
+        {
+            rigidbody.velocity = Vector2.up * jumpVelocity;
+        }
+    }
+
+    public void Move(string direction)
+    {
+        if(direction == "left")
+        {
+            anim.SetInteger("direction", -1);
+            this.direction = -1;
+
+        }
+        else if (direction == "right")
+        {
+            anim.SetInteger("direction", 1);
+            this.direction = 1;
+        }
+        hasDestination = true;
+    }
+
+    public void Step(string direction)
+    {
+        ClearDestination();
+
+        if(direction == "left")
+        {
+            rigidbody.velocity = new Vector3(-3f, 0, 0);
+        }
+        else if (direction == "right")
+        {
+            rigidbody.velocity = new Vector3(3f, 0, 0);
+        }
+    }
+
+    /*
+     * === Voice command actions: end ===
+     *
+     */
+
+    /*
+     * === Keyboard movement: start ===
+     *
+     */
+    // Jump, float arg sets the upwards velocity of the jump.
+    private void Jump(float jumpVelocity)
+    {
+        ClearDestination();
+        rigidbody.velocity = Vector2.up * jumpVelocity;
     }
 
     private void MoveLeft()
@@ -107,63 +177,36 @@ public class Player : MonoBehaviour
         gameObject.transform.Translate(this.movementSpeed * Time.deltaTime, 0, 0);
     }
 
-    public void Movement(string direction)
-    {
-        Debug.Log("Called");
-        if(direction == "left")
-        {
-            anim.SetInteger("direction", -1);
-            this.direction = -1;
-
-        }
-        else if (direction == "right")
-        {
-            anim.SetInteger("direction", 1);
-            this.direction = 1;
-        }
-        hasDestination = true;
-    }
-
-    public void MovementStep(string direction)
-    {
-        ClearDestination();
-
-        if(direction == "left")
-        {
-            rigidbody.velocity = new Vector3(-3f, 0, 0);
-        }
-        else if (direction == "right")
-        {
-            rigidbody.velocity = new Vector3(3f, 0, 0);
-        }
-    }
     /*
      * === Keyboard movement: end ===
      */
 
-    private void setCanMove(bool b)
+    /*
+     * Player interactions
+     */
+    public void InteractWithPortal(GameObject portal)
     {
-        canMove = b;
-        anim.SetInteger("direction", 0);
+        // Wait x seconds
+        portal.GetComponent<Portal>().ActivatePortal();
     }
 
-    private bool IsGrounded()
+    public void InteractWithTeleport(GameObject teleportFrom)
     {
-        // Currently allowing double jumps...
-        RaycastHit2D raycast = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down * .1f, foregroundLayerMask);
-        //Debug.Log(raycast.collider.tag);
-        return raycast.collider != null;
+        Vector3 teleportTo = teleportFrom.GetComponent<Teleport>().GetTeleportPos();
+        // Wait x seconds
+        gameObject.transform.position = teleportTo;
     }
 
+    /*
+     * Triggers & collisions.
+     */
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Coin")
         {
             Destroy(collision.gameObject);
             coinsCollected++;
-            // Increase coin count.
-            int newCoinCount = coinsCollected;// prevCoin++;
-            coinsCollectedText.text = newCoinCount.ToString();
+            coinsCollectedText.text = coinsCollected.ToString();
 
         }
         else if ((collision.tag == "Door Trigger"))
@@ -186,62 +229,5 @@ public class Player : MonoBehaviour
             collision.gameObject.GetComponent<Door>().CloseDoor();
         }
     }
-
-
-    public void InteractWithPortal()
-    {
-        // Get distance from portal
-        Vector3 portalPos = GameObject.FindGameObjectWithTag("Portal").transform.position;
-        if (Vector3.Distance(gameObject.transform.position, portalPos) < 2)
-        {
-
-            Debug.Log("Moving on to the next level.");
-            setCanMove(false);
-            GameObject portal = GameObject.FindGameObjectWithTag("Portal");
-            portal.GetComponent<Portal>().ActivatePortal();
-        }
-        else
-        {
-            Debug.Log("You are not close enough!");
-        }
-    }
-
-    public void InteractWithTeleport()
-    {
-        bool found = false;
-        foreach(GameObject tp in teleportList) {
-            Vector3 tpFrom = tp.transform.position;
-
-            if (Vector3.Distance(gameObject.transform.position, tpFrom) < 2)
-            {
-                found = true;
-
-                Vector3 tpTo = tp.GetComponent<Teleport>().GetTeleportPos();
-                Debug.Log(tpTo);
-                // Wait x seconds
-                gameObject.transform.position = tpTo;
-                break;
-            }
-        }
-        if (!found)
-        {
-            Debug.Log("You are not close enough!");
-        }
-
-    }
-
-
-
-    /*
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Block")
-        {
-            Debug.Log("BOUNCY BLOCK.");
-            Jump(40.0f);
-        }
-        
-    }
-    */
 
 }

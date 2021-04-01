@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using System.Text;  // for stringbuilder
 using UnityEngine;
 using UnityEngine.Windows.Speech;   // grammar recogniser
@@ -8,7 +6,7 @@ using UnityEngine.Windows.Speech;   // grammar recogniser
 public class GameGrammarController : MonoBehaviour
 {
     private GrammarRecognizer gr;
-    private GameObject player;
+    private GrammarAdaptor grammarAdaptor;
 
     private void Start()
     {
@@ -20,7 +18,7 @@ public class GameGrammarController : MonoBehaviour
         gr.Start();
         if (gr.IsRunning) Debug.Log("Recogniser running");
 
-        player = GameObject.FindGameObjectWithTag("Player"); 
+        grammarAdaptor = GetComponent<GrammarAdaptor>();
 
     }
 
@@ -43,51 +41,55 @@ public class GameGrammarController : MonoBehaviour
 
     private void DecideAction(string arg)
     {
-        // Moveemnt
+        // Move
         if (arg.ToLower().Equals("left"))
         {
-            player.GetComponent<Player>().Movement("left");
+            grammarAdaptor.PlayerAction("move", "left");
         }
         else if (arg.ToLower().Equals("right"))
         {
-            player.GetComponent<Player>().Movement("right");
+            grammarAdaptor.PlayerAction("move", "right");
         }
         // Step
         else if (arg.ToLower().Equals("step left"))
         {
-            player.GetComponent<Player>().MovementStep("left");
+            grammarAdaptor.PlayerAction("step", "left");
         }
         else if (arg.ToLower().Equals("step right"))
         {
-            player.GetComponent<Player>().MovementStep("right");
+            grammarAdaptor.PlayerAction("step", "right");
         }
         // Jump
         else if (arg.ToLower().Equals("jump left"))
         {
-            player.GetComponent<Player>().Jump("left");
+            grammarAdaptor.PlayerAction("jump", "left");
         }
         else if (arg.ToLower().Equals("jump right"))
         {
-            player.GetComponent<Player>().Jump("right");
+            grammarAdaptor.PlayerAction("jump", "right");
         }
         else if (arg.ToLower().Equals("jump up"))
         {
-            player.GetComponent<Player>().Jump("up");
+            grammarAdaptor.PlayerAction("jump", "up");
+        }
+        // Dash 
+        else if (arg.ToLower().Equals("dash left"))
+        {
+            grammarAdaptor.PlayerAction("dash", "left");
+        }
+        else if (arg.ToLower().Equals("dash right"))
+        {
+            grammarAdaptor.PlayerAction("dash", "right");
         }
         // Stop
         else if (arg.ToLower().Equals("stop"))
         {
-            player.GetComponent<Player>().ClearDestination();
+            grammarAdaptor.StopMovement();
         }
         // Portal
         else if (arg.ToLower().Equals("portal"))
         {
-            player.GetComponent<Player>().InteractWithPortal();
-        }
-        // Teleportal
-        else if (arg.ToLower().Equals("teleport"))
-        {
-            player.GetComponent<Player>().InteractWithTeleport();
+            grammarAdaptor.PlayerInteractions("portal");
         }
 
 

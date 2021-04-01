@@ -5785,7 +5785,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &227581147
 GameObject:
@@ -9195,7 +9195,7 @@ PrefabInstance:
     - target: {fileID: 6463766530822145567, guid: 13f51ae871d5b4a4f8685b83fe8f76f4,
         type: 3}
       propertyPath: m_Name
-      value: Canvas 1
+      value: Canvas
       objectReference: {fileID: 0}
     - target: {fileID: 6463766530822145571, guid: 13f51ae871d5b4a4f8685b83fe8f76f4,
         type: 3}
@@ -9210,7 +9210,7 @@ PrefabInstance:
     - target: {fileID: 6463766530822145571, guid: 13f51ae871d5b4a4f8685b83fe8f76f4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6463766530822145571, guid: 13f51ae871d5b4a4f8685b83fe8f76f4,
         type: 3}
@@ -9310,7 +9310,7 @@ PrefabInstance:
     - target: {fileID: 6463766531657915401, guid: 13f51ae871d5b4a4f8685b83fe8f76f4,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LaunchMainMenu
+      value: LaunchLevel4
       objectReference: {fileID: 0}
     - target: {fileID: 6983042226636189145, guid: 13f51ae871d5b4a4f8685b83fe8f76f4,
         type: 3}
@@ -9320,7 +9320,7 @@ PrefabInstance:
     - target: {fileID: 6983042226636189145, guid: 13f51ae871d5b4a4f8685b83fe8f76f4,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LaunchLevel3
+      value: ReloadScene
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13f51ae871d5b4a4f8685b83fe8f76f4, type: 3}
@@ -12640,7 +12640,7 @@ PrefabInstance:
     - target: {fileID: 8505765043352358134, guid: 94bd65435a15ad84085217d159772917,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.47
+      value: 9.35
       objectReference: {fileID: 0}
     - target: {fileID: 8505765043352358134, guid: 94bd65435a15ad84085217d159772917,
         type: 3}
@@ -12775,12 +12775,12 @@ PrefabInstance:
     - target: {fileID: 977750118720266731, guid: 0e607e1a00f3c7d42bf0f2ab5f632f49,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -22.39947
+      value: -22.414793
       objectReference: {fileID: 0}
     - target: {fileID: 977750118720266731, guid: 0e607e1a00f3c7d42bf0f2ab5f632f49,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 75.51549
+      value: 75.51537
       objectReference: {fileID: 0}
     - target: {fileID: 1694868146870981192, guid: 0e607e1a00f3c7d42bf0f2ab5f632f49,
         type: 3}
@@ -12917,6 +12917,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 41711298648940439, guid: 99b2187dd66c698408571ace25150e22,
+        type: 3}
+      propertyPath: teleportList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 41711298648940439, guid: 99b2187dd66c698408571ace25150e22,
+        type: 3}
+      propertyPath: teleportList.Array.data[0]
+      value: 
+      objectReference: {fileID: 1781902933}
+    - target: {fileID: 41711298648940439, guid: 99b2187dd66c698408571ace25150e22,
+        type: 3}
+      propertyPath: teleportList.Array.data[1]
+      value: 
+      objectReference: {fileID: 554397780}
     - target: {fileID: 6366883422590501700, guid: 99b2187dd66c698408571ace25150e22,
         type: 3}
       propertyPath: m_RootOrder
