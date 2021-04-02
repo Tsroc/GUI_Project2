@@ -119,6 +119,7 @@ public class Player : MonoBehaviour
 
     public void Move(string direction)
     {
+        ClearDestination();
         if(direction == "left")
         {
             anim.SetInteger("direction", -1);
@@ -139,11 +140,11 @@ public class Player : MonoBehaviour
 
         if(direction == "left")
         {
-            rigidbody.velocity = new Vector3(-3f, 0, 0);
+            rigidbody.velocity = new Vector3(-4f, 0, 0);
         }
         else if (direction == "right")
         {
-            rigidbody.velocity = new Vector3(3f, 0, 0);
+            rigidbody.velocity = new Vector3(4f, 0, 0);
         }
     }
 
@@ -186,12 +187,14 @@ public class Player : MonoBehaviour
      */
     public void InteractWithPortal(GameObject portal)
     {
+        ClearDestination();
         // Wait x seconds
         portal.GetComponent<Portal>().ActivatePortal();
     }
 
     public void InteractWithTeleport(GameObject teleportFrom)
     {
+        ClearDestination();
         Vector3 teleportTo = teleportFrom.GetComponent<Teleport>().GetTeleportPos();
         // Wait x seconds
         gameObject.transform.position = teleportTo;
@@ -202,7 +205,6 @@ public class Player : MonoBehaviour
      */
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.name);
         if (collision.tag == "Coin")
         {
             Destroy(collision.gameObject);
