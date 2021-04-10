@@ -1,5 +1,6 @@
 # GUI_Project2
 
+## Voice commands
 ### Menu commands
 - Play/Start/Begin game  
 Usable at the main menu, launches the game.
