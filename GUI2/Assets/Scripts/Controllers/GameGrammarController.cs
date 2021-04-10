@@ -42,11 +42,11 @@ public class GameGrammarController : MonoBehaviour
     private void DecideAction(string arg)
     {
         // Move
-        if (arg.ToLower().Equals("left"))
+        if (arg.ToLower().Equals("move left"))
         {
             grammarAdaptor.PlayerAction("move", "left");
         }
-        else if (arg.ToLower().Equals("right"))
+        else if (arg.ToLower().Equals("move right"))
         {
             grammarAdaptor.PlayerAction("move", "right");
         }
@@ -91,9 +91,18 @@ public class GameGrammarController : MonoBehaviour
         {
             grammarAdaptor.PlayerInteractions("portal");
         }
-
-
+        // Level over 
+        else if (arg.ToLower().Equals("next level"))
+        {
+            if (!grammarAdaptor.IsLevelComplete())
+            {
+                Debug.Log("The level has not been completed.");
+            }
+            else
+            {
+                grammarAdaptor.NextLevel();
+            }
+        }
 
     }
-
 }

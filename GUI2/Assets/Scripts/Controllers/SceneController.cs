@@ -15,12 +15,13 @@ public class SceneController : MonoBehaviour
     /*
         Will call the gamescene, loadscene will load on the next update and remain until the gamescene is loaded.
     */
+
     public void LaunchGame()
     {
         LaunchLevel1();
     }
 
-    public void LaunchLevel1()
+       public void LaunchLevel1()
     {
         SceneManager.LoadSceneAsync(SceneNames.LEVEL_1);
     }
@@ -52,7 +53,6 @@ public class SceneController : MonoBehaviour
     public void LaunchMainMenu()
     {
         // Set the loader callback action to load the game scene
-        Debug.Log("Test");
         SceneManager.LoadSceneAsync(SceneNames.MAINMENU);
     }
 

@@ -5797,7 +5797,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &227581147
 GameObject:
@@ -5997,7 +5997,7 @@ PrefabInstance:
     - target: {fileID: 6368888858442585655, guid: 4a9b1fccab22b3541a03c18c80a08ec4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6368888858442585655, guid: 4a9b1fccab22b3541a03c18c80a08ec4,
         type: 3}
@@ -6052,7 +6052,7 @@ PrefabInstance:
     - target: {fileID: 7327966783734906905, guid: 4a9b1fccab22b3541a03c18c80a08ec4,
         type: 3}
       propertyPath: jumpVelocity
-      value: 13
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7327966783734906905, guid: 4a9b1fccab22b3541a03c18c80a08ec4,
         type: 3}
@@ -9222,7 +9222,7 @@ PrefabInstance:
     - target: {fileID: 6463766530822145571, guid: 13f51ae871d5b4a4f8685b83fe8f76f4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6463766530822145571, guid: 13f51ae871d5b4a4f8685b83fe8f76f4,
         type: 3}
@@ -9336,6 +9336,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13f51ae871d5b4a4f8685b83fe8f76f4, type: 3}
+--- !u!114 &577703597 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6463766531657915401, guid: 13f51ae871d5b4a4f8685b83fe8f76f4,
+    type: 3}
+  m_PrefabInstance: {fileID: 577703596}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &591786535
 GameObject:
   m_ObjectHideFlags: 0
@@ -11763,7 +11775,7 @@ Transform:
   - {fileID: 301890684}
   - {fileID: 1941725803}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &825781292
 PrefabInstance:
@@ -11981,7 +11993,7 @@ Transform:
   m_Children:
   - {fileID: 2031197180}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &973294907
 GameObject:
@@ -12374,6 +12386,75 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 1309275614881200203, guid: d7b0bf8f709ee2f45a8243c231a20601, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d7b0bf8f709ee2f45a8243c231a20601, type: 3}
+--- !u!1001 &1143789974
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3028735649496164245, guid: 68f2502f04f1fe443988a9b4c8d5673f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3028735649496164245, guid: 68f2502f04f1fe443988a9b4c8d5673f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 265.68536
+      objectReference: {fileID: 0}
+    - target: {fileID: 3028735649496164245, guid: 68f2502f04f1fe443988a9b4c8d5673f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 185.48415
+      objectReference: {fileID: 0}
+    - target: {fileID: 3028735649496164245, guid: 68f2502f04f1fe443988a9b4c8d5673f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -40.0625
+      objectReference: {fileID: 0}
+    - target: {fileID: 3028735649496164245, guid: 68f2502f04f1fe443988a9b4c8d5673f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3028735649496164245, guid: 68f2502f04f1fe443988a9b4c8d5673f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3028735649496164245, guid: 68f2502f04f1fe443988a9b4c8d5673f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3028735649496164245, guid: 68f2502f04f1fe443988a9b4c8d5673f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3028735649496164245, guid: 68f2502f04f1fe443988a9b4c8d5673f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3028735649496164245, guid: 68f2502f04f1fe443988a9b4c8d5673f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3028735649496164245, guid: 68f2502f04f1fe443988a9b4c8d5673f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516528289617544418, guid: 68f2502f04f1fe443988a9b4c8d5673f,
+        type: 3}
+      propertyPath: m_Name
+      value: MusicPlayer
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 68f2502f04f1fe443988a9b4c8d5673f, type: 3}
 --- !u!1 &1180868242
 GameObject:
   m_ObjectHideFlags: 0
@@ -12934,7 +13015,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 146921954172289, guid: 0e607e1a00f3c7d42bf0f2ab5f632f49, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 146921954172289, guid: 0e607e1a00f3c7d42bf0f2ab5f632f49, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13240,6 +13321,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 41711298648940439, guid: 99b2187dd66c698408571ace25150e22,
+        type: 3}
+      propertyPath: nextLevelButton
+      value: 
+      objectReference: {fileID: 577703597}
     - target: {fileID: 41711298648940439, guid: 99b2187dd66c698408571ace25150e22,
         type: 3}
       propertyPath: teleportList.Array.size

@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     private int coinsCollected = 0;
     private int direction;
     private bool hasDestination = false;
-    private bool canMove = true;
+    private bool isLevelCompleted = false;
 
     void Start()
     {
@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (canMove)
+        if (!isLevelCompleted)
         {
             if (hasDestination)
             {
@@ -61,9 +61,14 @@ public class Player : MonoBehaviour
         hasDestination = false;
     }
 
-    private void setCanMove(bool b)
+    public bool IsLevelComplete()
     {
-        canMove = b;
+        return isLevelCompleted;
+    }
+
+    private void LevelComplete(bool b)
+    {
+        isLevelCompleted = b;
         anim.SetInteger("direction", 0);
     }
 
@@ -188,6 +193,7 @@ public class Player : MonoBehaviour
     public void InteractWithPortal(GameObject portal)
     {
         ClearDestination();
+        LevelComplete(true);
         // Wait x seconds
         portal.GetComponent<Portal>().ActivatePortal();
     }
@@ -220,7 +226,7 @@ public class Player : MonoBehaviour
         {
             Debug.Log("You died!");
             // Call end game menu
-            setCanMove(false);
+            LevelComplete(true);
             failureNotification.gameObject.SetActive(true);
         }
         else if (collision.tag == "Instruction")

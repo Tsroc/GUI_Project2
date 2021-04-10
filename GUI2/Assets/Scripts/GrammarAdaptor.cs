@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 /*
  * This class is used for interactions between the GrammarContoller and other classes.
@@ -12,6 +13,7 @@ public class GrammarAdaptor : MonoBehaviour
 
     SceneController sc;
     [SerializeField] private List<GameObject> teleportList;
+    [SerializeField] private Button nextLevelButton;
     private GameObject player;
     private GameObject portal;
 
@@ -96,5 +98,17 @@ public class GrammarAdaptor : MonoBehaviour
     {
         return Vector3.Distance(player.transform.position, destination.transform.position);
     }
+
+    public bool IsLevelComplete()
+    {
+        return player.GetComponent<Player>().IsLevelComplete();
+
+    }
+
+    public void NextLevel()
+    {
+        nextLevelButton.onClick.Invoke();
+    }
+
 
 }

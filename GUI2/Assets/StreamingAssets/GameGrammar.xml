@@ -8,60 +8,62 @@ xmlns="http://www.w3.org/2001/06/grammar">
 
   <rule id="controls">
     <one-of>
-      <item>
-        <ruleref uri="#movement"/>
-      </item>
-      <item>
-       <ruleref uri="#step"/>
-      </item>
-      <item>
-        <ruleref uri="#action"/>
-      </item>
-      <item>
-        <ruleref uri="#portal_interaction"/>
-      </item>
-      <item>
-        <ruleref uri="#gameover_menu"/>
-      </item>
+      <item><ruleref uri="#move"/></item>
+      <item><ruleref uri="#step"/></item>
+      <item><ruleref uri="#action"/></item>
+      <item><ruleref uri="#action_jump"/></item>
+      <item><ruleref uri="#action_dash"/></item>
+      <item><ruleref uri="#portal_interaction"/></item>
+      <item><ruleref uri="#levelover_menu"/></item>
     </one-of>
   </rule>
 
-  <!-- Movement -->
-  <rule id="movement">
-    <one-of>
-      <item> go </item>
-      <item> move </item>
-    </one-of>
-    <ruleref uri="#direction"/>
-    <tag>out=rules.latest();</tag>
-  </rule>
-
+  <!-- Directions -->
   <rule id="direction">
     <one-of>
       <item>left</item>
       <item>right</item>
+      <item>up</item>
     </one-of>
+  </rule>
+
+  <!-- Movement -->
+  <rule id="move">
+    <one-of>
+      <item> go <ruleref uri="#direction"/></item>
+      <item> move <ruleref uri="#direction"/></item>
+    </one-of>
+    <tag>out="move "+rules.latest();</tag>
   </rule>
 
   <rule id="step">
     <one-of>
-      <item>step left</item>
-      <item>step right</item>
+      <item> step <ruleref uri="#direction"/></item>
     </one-of>
+    <tag>out="step "+rules.latest();</tag>
   </rule>
 
   <!-- Action: -->
   <rule id="action">
     <one-of>
-      <item>jump left</item>
-      <item>jump right</item>
-      <item>jump up</item>
-      <item>dash left</item>
-      <item>dash right</item>
       <item>stop</item>
     </one-of>
   </rule>
 
+  <rule id="action_jump">
+    <one-of>
+      <item> jump <ruleref uri="#direction"/></item>
+    </one-of>
+    <tag>out="jump "+rules.latest();</tag>
+  </rule>
+
+  <rule id="action_dash">
+    <one-of>
+      <item> dash <ruleref uri="#direction"/></item>
+      <item>stop</item>
+    </one-of>
+    <tag>out="dash "+rules.latest();</tag>
+  </rule>
 
   <!-- Other actions -->
   <!-- Portal interactions -->
@@ -74,10 +76,9 @@ xmlns="http://www.w3.org/2001/06/grammar">
   </rule>
 
   <!-- Game Over -->
-  <rule id="gameover_menu">
+  <rule id="levelover_menu">
     <one-of>
-      <item>Menu</item>
-      <item>Exit</item>
+      <item>next level</item>
     </one-of>
   </rule>
 
