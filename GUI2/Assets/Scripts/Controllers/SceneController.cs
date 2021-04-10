@@ -11,11 +11,6 @@ public class SceneController : MonoBehaviour
     /*
         SceneController manages transitions between scenes.
     */
-
-    /*
-        Will call the gamescene, loadscene will load on the next update and remain until the gamescene is loaded.
-    */
-
     public void LaunchGame()
     {
         LaunchLevel1();
@@ -47,12 +42,8 @@ public class SceneController : MonoBehaviour
         SceneManager.LoadScene(scene.name);
     }
 
-    /*
-        Will call the menuscene, loadscene will load on the next update and remain until the menuscene is loaded.
-    */
     public void LaunchMainMenu()
     {
-        // Set the loader callback action to load the game scene
         SceneManager.LoadSceneAsync(SceneNames.MAINMENU);
     }
 

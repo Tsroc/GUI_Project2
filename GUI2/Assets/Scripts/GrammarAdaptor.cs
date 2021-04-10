@@ -11,9 +11,9 @@ public class GrammarAdaptor : MonoBehaviour
 {
     private readonly float INTERACTION_DISTANCE = 2.0f;
 
-    SceneController sc;
     [SerializeField] private List<GameObject> teleportList;
     [SerializeField] private Button nextLevelButton;
+    private SceneController sc;
     private GameObject player;
     private GameObject portal;
 
@@ -67,7 +67,6 @@ public class GrammarAdaptor : MonoBehaviour
                 Debug.Log("You are not close enough!");
             }
         }
-
     }
 
     public void PlayerAction(string action, string direction)
@@ -109,6 +108,5 @@ public class GrammarAdaptor : MonoBehaviour
     {
         nextLevelButton.onClick.Invoke();
     }
-
 
 }

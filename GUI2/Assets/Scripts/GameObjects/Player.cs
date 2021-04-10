@@ -233,7 +233,6 @@ public class Player : MonoBehaviour
         {
             collision.gameObject.GetComponent<Instruction>().Activate();
         }
-
     }
     private void OnTriggerExit2D(Collider2D collision)
     {

@@ -12,8 +12,6 @@ using UnityEngine.Windows.Speech;   // grammar recogniser
 
 public class MainMenuGrammarController : MonoBehaviour
 {
-
-
     private GrammarRecognizer gr;
     private SceneController sc;
 
